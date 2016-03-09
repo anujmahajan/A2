@@ -1,0 +1,16 @@
+\begin{thebibliography}{1}
+
+\bibitem{android_network_tutorial}
+Android network tutorial.
+\newblock http://developer.android.com/training/basics/network-ops/index.html.
+
+\bibitem{volley_tutorial_1}
+volley tutorial.
+\newblock
+  https://www.simplifiedcoding.net/android-volley-post-request-tutorial/.
+
+\bibitem{volley_tutorial_2}
+volley tutorial technoburg.
+\newblock http://www.technoburgh.com/android/android-studio-volley/.
+
+\end{thebibliography}
