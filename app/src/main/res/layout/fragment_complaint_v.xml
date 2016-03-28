@@ -1,16 +1,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.user.complaintapp.NotifyV"
-    android:weightSum="1">
+    tools:context="com.example.user.complaintapp.ComplaintV">
 
     <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="minor text"
-    android:id="@+id/cv1" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="minor text"
+        android:id="@+id/cv1" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -52,24 +51,68 @@
         android:layout_height="wrap_content"
         android:text="anony"
         android:id="@+id/cv8" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="teamid"
+        android:id="@+id/cv9" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="imageid"
+        android:id="@+id/cv10" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="red"
+        android:id="@+id/cv11" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ispersonal"
+        android:id="@+id/cv12" />
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="status"
-        android:id="@+id/cv9"
+        android:id="@+id/cv13"
         android:layout_weight="0.03" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="follow"
+        android:text="check status"
         android:id="@+id/b1" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="unfollow"
+        android:text="view polls"
         android:id="@+id/b2" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="view threads"
+        android:id="@+id/b3" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="upvote"
+        android:id="@+id/b4" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="downvote"
+        android:id="@+id/b5" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="mark redundant"
+        android:id="@+id/b6" />
 
 </LinearLayout>

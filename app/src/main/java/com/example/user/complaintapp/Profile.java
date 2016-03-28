@@ -149,29 +149,25 @@ NavigationView navigationView=null;
             ft.commit();
 
         } else if (id == R.id.viewc) {
-            FragmentManager fm =getFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            MyComplaintsf list = new MyComplaintsf();
-            ft.replace(R.id.frag, list);
+            MyComplaintsf b1=new MyComplaintsf();
+            android.support.v4.app.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.frag, b1);
             ft.commit();
-            Toast.makeText(this, "Observation msdnfsdmbnCancelled", Toast.LENGTH_SHORT).show();
 
 
         } else if (id == R.id.notify) {
 
-            FragmentManager fm =getFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            Notificationf list = new Notificationf();
-            ft.replace(R.id.frag, list);
+            Notificationf b1=new Notificationf();
+            android.support.v4.app.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.frag, b1);
             ft.commit();
 
 
 
         } else if (id == R.id.resolve) {
-            FragmentManager fm =getFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            Resolvef list = new Resolvef();
-            ft.replace(R.id.frag, list);
+            Resolvef b1=new Resolvef();
+            android.support.v4.app.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.frag, b1);
             Toast.makeText(this, "Observation msdnfsdmbnCdf,jhsmdfnancelled", Toast.LENGTH_SHORT).show();
 
             ft.commit();

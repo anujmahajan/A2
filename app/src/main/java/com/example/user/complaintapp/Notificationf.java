@@ -1,7 +1,7 @@
 package com.example.user.complaintapp;
 
 
-import android.app.ListFragment;
+import android.support.v4.app.ListFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -38,15 +38,10 @@ import static com.example.user.complaintapp.R.layout.subject;
 
 public class Notificationf extends ListFragment {
     ArrayAdapter<String> t;
-    private  ListView l;
-    TextView t1,t2;
+    String[] array1;
     private static int udone=0;
-    public static ArrayList<String> comp_id=new ArrayList<String>();
-    public static ArrayList<String> id=new ArrayList<String>();
-    public static ArrayList<String> CCodes=new ArrayList<String>();
-    private String jsonResponse;
+    private static ArrayList<String> comp_id,comp_txt,comp_prio,comp_compl,comp_resolv,comp_poll,comp_thread,comp_anon,comp_status;
     private static String JSON_URL ;
-    final String[] note ={"red","blue","green"};
     public Notificationf() {
         // Required empty public constructor
         JSON_URL= Login.ip + "default/mynotes.json";
@@ -66,6 +61,15 @@ public class Notificationf extends ListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         //get the json data to fill the adapter
+         comp_id=new ArrayList<String>();
+         comp_txt=new ArrayList<String>();
+         comp_prio=new ArrayList<String>();
+         comp_compl=new ArrayList<String>();
+         comp_resolv=new ArrayList<String>();
+         comp_poll=new ArrayList<String>();
+         comp_thread=new ArrayList<String>();
+         comp_anon=new ArrayList<String>();
+         comp_status=new ArrayList<String>();
         requestdata();
     }
 
@@ -87,8 +91,16 @@ public class Notificationf extends ListFragment {
                         for (int i = 0; i < complist.length(); i++) {
                             JSONObject compl = (JSONObject) complist.get(i);
                             comp_id.add(compl.getString("id"));
+                            comp_txt.add(compl.getString("maintext"));
+                            comp_prio.add(compl.getString("priority"));
+                            comp_compl.add(compl.getString("complainer"));
+                            comp_resolv.add(compl.getString("resolver"));
+                            comp_poll.add(compl.getString("pollId"));
+                            comp_thread.add(compl.getString("threadId"));
+                            comp_anon.add(compl.getString("anony"));
+                            comp_status.add(compl.getString("status"));
                         }
-                        String[] array1 = comp_id.toArray(new String[comp_id.size()]);
+                        array1 = comp_id.toArray(new String[comp_id.size()]);
                         t = new ArrayAdapter<String>(getActivity(), R.layout.subject,R.id.sub,array1);
                         setListAdapter(t);
                         //udone set to 1 for non repetative json results
@@ -112,14 +124,32 @@ public class Notificationf extends ListFragment {
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         String S = (String)l.getItemAtPosition(position);
+        //based on s get the remaining string values
+        int y=comp_id.indexOf(S);
+        String S1=comp_txt.get(y);
+        String S2=comp_prio.get(y);
+        String S3=comp_compl.get(y);
+        String S4=comp_poll.get(y);
+        String S5=comp_resolv.get(y);
+        String S6=comp_thread.get(y);
+        String S7=comp_anon.get(y);
+        String S8=comp_status.get(y);
             NotifyV myDetailFragment = new NotifyV();
             Bundle bundle = new Bundle();
-            bundle.putString("KEY", S);
+            bundle.putString("txt", S1);
+        bundle.putString("id", S);
+        bundle.putString("prio", S2);
+        bundle.putString("comp", S3);
+        bundle.putString("poll", S4);
+        bundle.putString("res", S5);
+        bundle.putString("thread", S6);
+        bundle.putString("anon", S7);
+        bundle.putString("status",S8);
             myDetailFragment.setArguments(bundle);
-        android.app.FragmentManager fm =getFragmentManager();
+        FragmentManager fm =getFragmentManager();
 
         if (fm.findFragmentById(android.R.id.content) == null) {
-            android.app.FragmentTransaction ft = fm.beginTransaction();
+            FragmentTransaction ft = fm.beginTransaction();
             // FragmentTransaction fragmentTransaction = getActivity().getFragmentManager().beginTransaction();
             ft.replace(R.id.frag, myDetailFragment);
             ft.commit();
