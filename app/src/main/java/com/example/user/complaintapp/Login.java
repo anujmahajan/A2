@@ -42,9 +42,7 @@ public class Login extends AppCompatActivity {
                 usernamestr = username.getText().toString();
                 passwordstr = password.getText().toString();
                 JSON_URL = ip + "default/login.json?userid=" + usernamestr + "&password=" + passwordstr;
-                Toast.makeText(getApplicationContext(),
-                        JSON_URL,
-                        Toast.LENGTH_LONG).show();
+
                 registerUser();//method handling the request sending part
 
 

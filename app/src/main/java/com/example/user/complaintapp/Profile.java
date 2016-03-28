@@ -41,10 +41,16 @@ NavigationView navigationView=null;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-      /* Detailsf b1=new Detailsf();
+        Intent i=getIntent();
+        String[] s=i.getStringArrayExtra("data");
+        Bundle b=new Bundle();
+        b.putStringArray("data", s);
+       Detailsf b1=new Detailsf();
+        b1.setArguments(b);
         android.support.v4.app.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.frag, b1);
-        ft.commit();*/
+        ft.commit();
+
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -71,7 +77,7 @@ NavigationView navigationView=null;
 
     private void logout() {
         JsonObjectRequest jreq = new JsonObjectRequest(Request.Method.GET,
-                "http://10.205.156.47:8000/default/logout.json", null, new Response.Listener<JSONObject>() {
+                "http://10.192.32.86:8000/default/logout.json", null, new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {

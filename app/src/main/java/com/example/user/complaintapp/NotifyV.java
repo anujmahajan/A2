@@ -25,19 +25,19 @@ public class NotifyV extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.fragment_notify_v, container, false);
+        t=(TextView)v.findViewById(R.id.tv);
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            String i = bundle.getString("key");
+            t.setText(i);
         return v;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Toast.makeText(getActivity(), "Observation msdnfsdmbnCanceholy shitlled", Toast.LENGTH_SHORT).show();
         // Inflate the layout for this fragment
-        t=(TextView)getActivity().findViewById(R.id.tv);
-        Bundle bundle = this.getArguments();
-        if (bundle != null) {
-            String i = bundle.getString("key");
-            t.setText(i);
+
 
         }
     }
