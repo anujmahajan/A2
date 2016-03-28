@@ -2,14 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clickable="true"
     android:weightSum="1">
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:onClick="open"
-        android:clickable="true"
         android:text="subject"
+        android:focusable="false"
         android:id="@+id/sub"
+        android:descendantFocusability="blocksDescendants"
         android:layout_weight="0.10" />
 </LinearLayout>

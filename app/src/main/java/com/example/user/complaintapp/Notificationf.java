@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -23,11 +24,10 @@ import java.util.ArrayList;
 
 import static com.example.user.complaintapp.R.layout.subject;
 
-
 public class Notificationf extends Fragment {
-
+    ArrayAdapter<String> t;
     private  ListView l;
-
+   Button b11;
     public Notificationf() {
         // Required empty public constructor
     }
@@ -39,18 +39,42 @@ public class Notificationf extends Fragment {
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_notificationf, container, false);
 
-        l=(ListView)v.findViewById(R.id.lvn);
-        String[] note ={"red","blue","green"};
-        ArrayAdapter<String> t;
+        l=(ListView)v.findViewById(R.id.l);
+        final String[] note ={"red","blue","green"};
+
         t = new ArrayAdapter<String>(getActivity(), R.layout.subject,R.id.sub,note);
         l.setAdapter(t);
-
-
+        l.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //String item = parent.g(position);
+                Toast.makeText(getActivity().getApplicationContext(), "Observation Cancelled", Toast.LENGTH_LONG).show();
+            }
+        });
         return v;
     }
 
+    /*@Override
+    public void onStart() {
+        super.onStart();
+        getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getActivity().getApplicationContext(), "Observation Cancelled", Toast.LENGTH_LONG).show();
+            }
+        });
+    }*/
+//    @Override
+//    public void onListItemClick(ListView l, View v, int position, long id) {
+//        // TODO Auto-generated method stub
+//        super.onListItemClick(l, v, position, id);
+//
+//    }
 
-    public void open(View view) {
+
+
+
+   /* public void open(View view) {
       /*  TextView tempb=(TextView)view;
         String S= tempb.getText().toString();
         Toast.makeText(getActivity().getApplicationContext(),
@@ -59,11 +83,12 @@ public class Notificationf extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putString("key", S);
         NotifyV n=new NotifyV();
-        n.setArguments(bundle);*/
+        n.setArguments(bundle);
         Fragment mFragment = new NotifyV();
         FragmentTransaction ft=getActivity().getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.frag, mFragment).commit();
-    }
+    }*/
+
 
 
 }

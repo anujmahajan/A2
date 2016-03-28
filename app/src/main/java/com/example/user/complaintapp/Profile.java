@@ -2,8 +2,12 @@ package com.example.user.complaintapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ListFragment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class Profile extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -23,7 +28,7 @@ NavigationView navigationView=null;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        Detailsf b1=new Detailsf();
+       Detailsf b1=new Detailsf();
         android.support.v4.app.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.frag, b1);
         ft.commit();
@@ -92,25 +97,57 @@ NavigationView navigationView=null;
             // add complaint later
 
         } else if (id == R.id.viewc) {
-            MyComplaintsf b1=new MyComplaintsf();
+           /* MyComplaintsf b1=new MyComplaintsf();
             android.support.v4.app.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.frag, b1);
+            ft.commit();*/
+            FragmentManager fm =getFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            MyComplaintsf list = new MyComplaintsf();
+            ft.replace(R.id.frag, list);
             ft.commit();
+            Toast.makeText(this, "Observation msdnfsdmbnCancelled", Toast.LENGTH_SHORT).show();
 
 
         } else if (id == R.id.notify) {
             //Intent myIntent1 = new Intent(
               //      Profile.this,Notification.class);//this isnt the intetn i want
             // startActivity(myIntent1);
+          // Notificationf b1=new Notificationf();
+            //android.support.v4.app.ListFragment.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
+            //ft.replace(R.id.frag, b1);
+            //ft.commit();
+
+           /* android.support.v4.app.ListFragment.FragmentTransaction transaction = getSupportFragmentManager()
+                    .beginTransaction();
+            Notificationf newFragment = new Notificationf();
+            transaction.add(R.id.frag, newFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();*/
+
+           /* FragmentManager fm =getFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            Notificationf list = new Notificationf();
+            ft.replace(R.id.frag, l);
+            ft.commit();*/
+
             Notificationf b1=new Notificationf();
             android.support.v4.app.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.frag, b1);
             ft.commit();
+              //  fm.beginTransaction().replace(R.id.frag, list).commit();
 
         } else if (id == R.id.resolve) {
-            Resolvef b1=new Resolvef();
+           /* Resolvef b1=new Resolvef();
             android.support.v4.app.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.frag, b1);
+            ft.commit();*/
+            FragmentManager fm =getFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            Resolvef list = new Resolvef();
+            ft.replace(R.id.frag, list);
+            Toast.makeText(this, "Observation msdnfsdmbnCdf,jhsmdfnancelled", Toast.LENGTH_SHORT).show();
+
             ft.commit();
         }
 
@@ -118,6 +155,9 @@ NavigationView navigationView=null;
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
 
 
 }
