@@ -67,13 +67,16 @@ public class Notificationf extends ListFragment {
 
             NotifyV myDetailFragment = new NotifyV();
             Bundle bundle = new Bundle();
-            bundle.putString("KEY",S);
+            bundle.putString("KEY", S);
             myDetailFragment.setArguments(bundle);
         android.app.FragmentManager fm =getFragmentManager();
-        android.app.FragmentTransaction ft = fm.beginTransaction();
-           // FragmentTransaction fragmentTransaction = getActivity().getFragmentManager().beginTransaction();
-        ft.replace(R.id.frag, myDetailFragment);
+
+        if (fm.findFragmentById(android.R.id.content) == null) {
+            android.app.FragmentTransaction ft = fm.beginTransaction();
+            // FragmentTransaction fragmentTransaction = getActivity().getFragmentManager().beginTransaction();
+            ft.replace(R.id.frag, myDetailFragment);
             ft.commit();
+        }
 
 
 

@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class Login extends AppCompatActivity {
      Button b;
-    public static String ip="http://10.192.40.165:8000/";     //public static ip for all classes
+    public static String ip="http://10.192.32.86:8000/";     //public static ip for all classes
     private static String JSON_URL;
     public static ArrayList<String> logchoice=new ArrayList<String>();
     public static String[] res = new String[5]  ;
@@ -33,8 +33,8 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         b=(Button)findViewById(R.id.button);
-        username = (EditText) findViewById(R.id.editText2);
-        password = (EditText) findViewById(R.id.editText);
+        username = (EditText) findViewById(R.id.editText);
+        password = (EditText) findViewById(R.id.editText2);
         b.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -42,10 +42,11 @@ public class Login extends AppCompatActivity {
                 usernamestr = username.getText().toString();
                 passwordstr = password.getText().toString();
                 JSON_URL = ip + "default/login.json?userid=" + usernamestr + "&password=" + passwordstr;
-                //registerUser();//method handling the request sending part
-                Intent myIntent1 = new Intent(
-                        Login.this,Profile.class);
-                startActivity(myIntent1);
+                Toast.makeText(getApplicationContext(),
+                        JSON_URL,
+                        Toast.LENGTH_LONG).show();
+                registerUser();//method handling the request sending part
+
 
             }
         });
@@ -57,20 +58,23 @@ public class Login extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-
+                    Boolean s=response.getBoolean("success");
+                    Toast.makeText(getApplicationContext(),
+                            s.toString(),
+                            Toast.LENGTH_LONG).show();
                     JSONObject u=response.getJSONObject("user");
-                    String s=response.getString("success");
+                    //Boolean s=response.getBoolean("success");
                     String name = "";
                     name = u.getString("first_name") + "  " + u.getString("last_name");
                     jsonResponse = "Hello "+ name ;
                     //arraylist to get the data from one activity to another and also to set the adapter class
                     logchoice.add(u.getString("first_name"));
                     logchoice.add(u.getString("last_name"));
-                    logchoice.add(u.getString("entry_no"));
                     logchoice.add(u.getString("email"));
-                    logchoice.add(s);
+                    logchoice.add(u.getString("entry_no"));
+                    logchoice.add(u.getString("id"));
                     res = logchoice.toArray(new String[logchoice.size()]);
-                    if (s.equals("true"))
+                    if (s)
                     {
                         //define intent
                         Toast.makeText(Login.this,
@@ -86,7 +90,7 @@ public class Login extends AppCompatActivity {
                     e.printStackTrace();
                     Toast.makeText(getApplicationContext(),
                             "INVALID LOGIN"+e.getMessage(),
-                            Toast.LENGTH_SHORT).show();
+                            Toast.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {

@@ -20,18 +20,31 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 public class Profile extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 NavigationView navigationView=null;
     Toolbar toolbar=null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-       Detailsf b1=new Detailsf();
+      /* Detailsf b1=new Detailsf();
         android.support.v4.app.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.frag, b1);
-        ft.commit();
+        ft.commit();*/
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -42,6 +55,7 @@ NavigationView navigationView=null;
             public void onClick(View view) {
                 Snackbar.make(view, "Logout basically", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                logout();
             }
         });
 
@@ -54,6 +68,34 @@ NavigationView navigationView=null;
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
+    private void logout() {
+        JsonObjectRequest jreq = new JsonObjectRequest(Request.Method.GET,
+                "http://10.205.156.47:8000/default/logout.json", null, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                //define intent
+                Toast.makeText(Profile.this,
+                        "logged out",
+                        Toast.LENGTH_LONG).show();
+                //intent for another class
+                Intent myIntent = new Intent(
+                        Profile.this, LogRegActivity.class);
+                startActivity(myIntent);
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        //request queue
+        RequestQueue RequestP = Volley.newRequestQueue(this);
+        RequestP.add(jreq);
+        }
 
     @Override
     public void onBackPressed() {
@@ -95,12 +137,12 @@ NavigationView navigationView=null;
 
         if (id == R.id.add) {
             // add complaint later
-
-        } else if (id == R.id.viewc) {
-           /* MyComplaintsf b1=new MyComplaintsf();
+            AddComplaint b1=new AddComplaint();
             android.support.v4.app.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.frag, b1);
-            ft.commit();*/
+            ft.commit();
+
+        } else if (id == R.id.viewc) {
             FragmentManager fm =getFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
             MyComplaintsf list = new MyComplaintsf();
@@ -110,20 +152,6 @@ NavigationView navigationView=null;
 
 
         } else if (id == R.id.notify) {
-            //Intent myIntent1 = new Intent(
-              //      Profile.this,Notification.class);//this isnt the intetn i want
-            // startActivity(myIntent1);
-          // Notificationf b1=new Notificationf();
-            //android.support.v4.app.ListFragment.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
-            //ft.replace(R.id.frag, b1);
-            //ft.commit();
-
-           /* android.support.v4.app.ListFragment.FragmentTransaction transaction = getSupportFragmentManager()
-                    .beginTransaction();
-            Notificationf newFragment = new Notificationf();
-            transaction.add(R.id.frag, newFragment);
-            transaction.addToBackStack(null);
-            transaction.commit();*/
 
             FragmentManager fm =getFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
@@ -131,17 +159,9 @@ NavigationView navigationView=null;
             ft.replace(R.id.frag, list);
             ft.commit();
 
-           /* Notificationf b1=new Notificationf();
-            android.support.v4.app.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.frag, b1);
-            ft.commit();*/
-              //  fm.beginTransaction().replace(R.id.frag, list).commit();
+
 
         } else if (id == R.id.resolve) {
-           /* Resolvef b1=new Resolvef();
-            android.support.v4.app.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.frag, b1);
-            ft.commit();*/
             FragmentManager fm =getFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
             Resolvef list = new Resolvef();
