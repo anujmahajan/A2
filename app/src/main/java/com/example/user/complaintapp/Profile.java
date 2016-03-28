@@ -125,16 +125,16 @@ NavigationView navigationView=null;
             transaction.addToBackStack(null);
             transaction.commit();*/
 
-           /* FragmentManager fm =getFragmentManager();
+            FragmentManager fm =getFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
             Notificationf list = new Notificationf();
-            ft.replace(R.id.frag, l);
-            ft.commit();*/
+            ft.replace(R.id.frag, list);
+            ft.commit();
 
-            Notificationf b1=new Notificationf();
+           /* Notificationf b1=new Notificationf();
             android.support.v4.app.FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.frag, b1);
-            ft.commit();
+            ft.commit();*/
               //  fm.beginTransaction().replace(R.id.frag, list).commit();
 
         } else if (id == R.id.resolve) {
