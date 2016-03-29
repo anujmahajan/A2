@@ -4,7 +4,8 @@
     android:background="@drawable/blue3"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context="com.example.user.complaintapp.AddComplaint">
+    tools:context="com.example.user.complaintapp.AddComplaint"
+    android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
@@ -102,7 +103,16 @@
                   android:layout_gravity="center_horizontal|bottom"
                   android:background="@drawable/buttonborder"/>
 
-          </LinearLayout>
+           </LinearLayout>
+
+             <Button
+                 android:layout_width="150dp"
+                 android:layout_height="wrap_content"
+                 android:text="Add Complaint"
+                 android:id="@+id/button2"
+                 android:layout_gravity="center_horizontal|bottom"
+                 android:background="@drawable/buttonborder"/>
+
          </LinearLayout>
      </RelativeLayout>
     </ScrollView>

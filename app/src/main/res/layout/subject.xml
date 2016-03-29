@@ -9,5 +9,6 @@
         android:layout_height="50dp"
         android:text="subject"
         android:id="@+id/sub"
-        android:layout_weight="0.10" />
+        android:layout_weight="0.10"
+        android:background="@drawable/buttonborder"/>
 </LinearLayout>

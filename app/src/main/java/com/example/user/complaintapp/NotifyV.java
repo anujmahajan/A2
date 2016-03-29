@@ -29,7 +29,7 @@ import org.json.JSONObject;
  */
 public class NotifyV extends Fragment {
     private Button b1,b2;
-    private TextView t1,t2,t3,t4,t5,t6,t7,t8,t9;
+    private TextView t1,t3,t4,t5,t6,t8,t9;
     private String i1,i2,i3,i4,i5,i6,i7,i8,i9;
     private String JSON1;
     private String JSON2;
@@ -43,12 +43,12 @@ public class NotifyV extends Fragment {
                              Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.fragment_notify_v, container, false);
         t1=(TextView)v.findViewById(R.id.cv1);
-        t2=(TextView)v.findViewById(R.id.cv2);
+        //t2=(TextView)v.findViewById(R.id.cv2);
         t3=(TextView)v.findViewById(R.id.cv3);
         t4=(TextView)v.findViewById(R.id.cv4);
         t5=(TextView)v.findViewById(R.id.cv5);
         t6=(TextView)v.findViewById(R.id.cv6);
-        t7=(TextView)v.findViewById(R.id.cv7);
+        //t7=(TextView)v.findViewById(R.id.cv7);
         t8=(TextView)v.findViewById(R.id.cv8);
         t9=(TextView)v.findViewById(R.id.cv9);
         b1=(Button)v.findViewById(R.id.b1);
@@ -66,12 +66,12 @@ public class NotifyV extends Fragment {
              i9= bundle.getString("status");
 
             t1.setText(i1);
-            t2.setText(i2);
+          //  t2.setText(i2);
             t3.setText(i3);
             t4.setText(i4);
             t5.setText(i5);
             t6.setText(i6);
-            t7.setText(i7);
+          //  t7.setText(i7);
             t8.setText(i8);
             t9.setText(i9);
         }
