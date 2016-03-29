@@ -26,7 +26,7 @@ import org.json.JSONObject;
  */
 public class ComplaintV extends Fragment {
 
-    Button b1,b2,b3,b4,b5,b6;
+    Button b2,b3,b4,b5,b6;
     private TextView t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13;
     private String i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,i13;
     private String JSON1,JSON2,JSON3,JSON4,JSON5,JSON6 ;
@@ -54,12 +54,11 @@ public class ComplaintV extends Fragment {
         t11=(TextView)v.findViewById(R.id.cv11);
         t12=(TextView)v.findViewById(R.id.cv12);
         t13=(TextView)v.findViewById(R.id.cv13);
-        b1=(Button)v.findViewById(R.id.b1);
         b2=(Button)v.findViewById(R.id.b2);
         b3=(Button)v.findViewById(R.id.b3);
         b4=(Button)v.findViewById(R.id.b4);
         b5=(Button)v.findViewById(R.id.b5);
-        b6=(Button)v.findViewById(R.id.b6);
+       // b6=(Button)v.findViewById(R.id.b6);
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             i1 = bundle.getString("txt");
@@ -108,13 +107,13 @@ public class ComplaintV extends Fragment {
 
             }
         });
-        b6.setOnClickListener(new View.OnClickListener() {
+        /*b6.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 markred();
             }
         });
-
+        */
 
         return v;
     }
