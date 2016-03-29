@@ -3,6 +3,8 @@ package com.example.user.complaintapp;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +28,7 @@ import org.json.JSONObject;
  */
 public class ResolveD extends Fragment {
 
-    Button b1,b2,b3,b4,b5,b6;
+    Button b1,b2,b3,b4,b5,b6,b7;
     private TextView t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13;
     private String i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,i13;
     private String JSON1,JSON2,JSON3,JSON4,JSON5,JSON6 ;
@@ -60,6 +62,7 @@ public class ResolveD extends Fragment {
         b4 = (Button) v.findViewById(R.id.b4);
         b5 = (Button) v.findViewById(R.id.b5);
         b6 = (Button) v.findViewById(R.id.b6);
+        b7 = (Button) v.findViewById(R.id.b7);
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             i1 = bundle.getString("txt");
@@ -94,6 +97,32 @@ public class ResolveD extends Fragment {
         JSON1 = Login.ip + "default/upvotec.json/" + i2 + "?up=1";//upvote
         JSON2 = Login.ip + "default/upvotec.json/" + i2 + "?up=0";//downvote
         JSON3 = Login.ip + "markred.json/" + i2;//mark red
+        JSON4=Login.ip+"default/resolve.json/"+i2;
+       // JSON5= Login.ip + "viewpoll.json/"+i2;            //view poll
+        //set the complaint as resolved
+        b1.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                resolve();
+
+            }
+        });
+        //create polls
+        b2.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                createpolls();
+
+            }
+        });
+        //view threads
+        b3.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                viewThreads();
+
+            }
+        });
         b4.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -114,9 +143,98 @@ public class ResolveD extends Fragment {
                 markred();
             }
         });
+        b7.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                viewPolls();
+
+            }
+        });
 
 
         return v;
+    }
+
+    private void viewThreads() {
+
+        //request to createpolls
+        ThreadView myDetailFragment = new ThreadView();
+        Bundle bundle = new Bundle();
+        bundle.putString("id", i2);
+        myDetailFragment.setArguments(bundle);
+        FragmentManager fm =getFragmentManager();
+
+        if (fm.findFragmentById(android.R.id.content) == null) {
+            FragmentTransaction ft = fm.beginTransaction();
+            // FragmentTransaction fragmentTransaction = getActivity().getFragmentManager().beginTransaction();
+            ft.replace(R.id.frag, myDetailFragment);
+            ft.commit();
+        }}
+    private void createpolls() {
+        //request to createpolls
+        //go to the next fragment and send json request for further process
+        setpoll myDetailFragment = new setpoll();
+        Bundle bundle = new Bundle();
+        bundle.putString("id", i2);
+        myDetailFragment.setArguments(bundle);
+        FragmentManager fm =getFragmentManager();
+
+        if (fm.findFragmentById(android.R.id.content) == null) {
+            FragmentTransaction ft = fm.beginTransaction();
+            // FragmentTransaction fragmentTransaction = getActivity().getFragmentManager().beginTransaction();
+            ft.replace(R.id.frag, myDetailFragment);
+            ft.commit();
+        }}
+
+
+    private void viewPolls() {
+        //request to createpolls
+        //go to the next fragment and send json request for further process
+        PollView myDetailFragment = new PollView();
+        Bundle bundle = new Bundle();
+        bundle.putString("id", i2);
+        myDetailFragment.setArguments(bundle);
+        FragmentManager fm =getFragmentManager();
+
+        if (fm.findFragmentById(android.R.id.content) == null) {
+            FragmentTransaction ft = fm.beginTransaction();
+            // FragmentTransaction fragmentTransaction = getActivity().getFragmentManager().beginTransaction();
+            ft.replace(R.id.frag, myDetailFragment);
+            ft.commit();
+        }}
+
+
+
+    private void resolve() {
+        JsonObjectRequest jreq = new JsonObjectRequest(Request.Method.GET,
+                JSON4, null, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+
+
+                try {
+                    // Parsing json object response
+                    Boolean b=response.getBoolean("success");
+                    if(b)
+                    {
+
+                        Toast.makeText(getActivity(),
+                                "Complaint resolved",
+                                Toast.LENGTH_SHORT).show();
+                    }}
+                catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getActivity(),
+                            "Not able to change the resolve status" + e.getMessage(),
+                            Toast.LENGTH_LONG).show();
+                }}}, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }});
+        RequestQueue RequestP = Volley.newRequestQueue(getActivity());
+        RequestP.add(jreq);
+
     }
 
     private void upvote() {
@@ -141,7 +259,7 @@ public class ResolveD extends Fragment {
                 catch (JSONException e) {
                     e.printStackTrace();
                     Toast.makeText(getActivity(),
-                            "Error: NOT WORKING " + e.getMessage(),
+                            "Not able to upvote the complaint" + e.getMessage(),
                             Toast.LENGTH_LONG).show();
                 }}}, new Response.ErrorListener() {
             @Override
@@ -172,7 +290,7 @@ public class ResolveD extends Fragment {
                 catch (JSONException e) {
                     e.printStackTrace();
                     Toast.makeText(getActivity(),
-                            "Error: NOT WORKING " + e.getMessage(),
+                            "Not able to downvote the complaint" + e.getMessage(),
                             Toast.LENGTH_LONG).show();
                 }}}, new Response.ErrorListener() {
             @Override

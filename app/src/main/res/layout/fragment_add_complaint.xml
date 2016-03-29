@@ -1,7 +1,8 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@drawable/blue3"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context="com.example.user.complaintapp.AddComplaint">
 
@@ -93,17 +94,18 @@
                  android:layout_marginRight="10dp"
                  android:background="@drawable/buttonborder"
                  android:layout_gravity="center_horizontal" />
+              <Button
+                  android:layout_width="150dp"
+                  android:layout_height="wrap_content"
+                  android:text="Add Complaint"
+                  android:id="@+id/button2"
+                  android:layout_gravity="center_horizontal|bottom"
+                  android:background="@drawable/buttonborder"/>
 
           </LinearLayout>
          </LinearLayout>
      </RelativeLayout>
     </ScrollView>
 
-    <Button
-     android:layout_width="150dp"
-     android:layout_height="wrap_content"
-     android:text="Add Complaint"
-     android:id="@+id/button2"
-     android:layout_gravity="center_horizontal|bottom"
-     android:background="@drawable/buttonborder"/>
-</FrameLayout>
+
+</LinearLayout>
