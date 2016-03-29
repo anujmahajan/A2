@@ -13,9 +13,10 @@ import android.view.ViewGroup;
  */
 public class PollView extends Fragment {
 
-
+     String Json,i2;
     public PollView() {
         // Required empty public constructor
+
     }
 
 
@@ -23,7 +24,19 @@ public class PollView extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_poll_view, container, false);
+        View v=inflater.inflate(R.layout.fragment_poll_view, container, false);
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+           //id of the complaint for the view to show
+            i2 = bundle.getString("id");
+            Json= Login.ip + "viewpoll.json/"+i2;            //view poll
+            request();
+        }
+        return v;
+    }
+
+    private void request() {
+
     }
 
 }

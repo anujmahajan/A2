@@ -17,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -92,7 +93,30 @@ public class ComplaintV extends Fragment {
 
         JSON1=Login.ip+"default/upvotec.json/"+i2+"?up=1";//upvote
         JSON2=Login.ip+"default/upvotec.json/"+i2+"?up=0";//downvote
-        JSON3=Login.ip+"markred.json/"+i2;//mark red
+        JSON3=Login.ip+"viewpoll.json/"+i2;//poll
+        JSON4=Login.ip+"viewthread.json/"+i2;//thread
+        //JSON5=Login.ip+"markred.json/"+i2;//search
+       /*b1.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                upvote();
+
+            }
+        });*/
+        b2.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                viewpolls();
+
+            }
+        });
+        b3.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                viewthreads();
+
+            }
+        });
         b4.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -116,6 +140,19 @@ public class ComplaintV extends Fragment {
         */
 
         return v;
+    }
+
+    private void viewthreads() {
+
+
+
+
+    }
+    private void viewpolls() {
+
+
+    }
+    private void search() {
     }
 
     private void upvote() {

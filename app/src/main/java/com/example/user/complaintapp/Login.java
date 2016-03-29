@@ -41,9 +41,10 @@ public class Login extends AppCompatActivity {
              //to profile activity
                 usernamestr = username.getText().toString();
                 passwordstr = password.getText().toString();
-                JSON_URL = ip + "default/login.json?userid=" + usernamestr + "&password=" + passwordstr;
+               // JSON_URL = ip + "default/login.json?userid=" + usernamestr + "&password=" + passwordstr;
+                JSON_URL = ip + "default/login.json?userid=" + "cs5110000" + "&password=" + "jim";
 
-                registerUser();//method handling the request sending part
+               registerUser();//method handling the request sending part
 
 
             }
