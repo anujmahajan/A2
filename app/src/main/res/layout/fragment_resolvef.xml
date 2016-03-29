@@ -3,6 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
+    android:background="@drawable/blue2"
     tools:context="com.example.user.complaintapp.Resolvef">
 
     <LinearLayout
@@ -10,20 +11,39 @@
         android:layout_width="wrap_content"
         android:orientation="vertical"
         android:id="@+id/linearLayout">
-        <TextView
+
+        <LinearLayout android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/linearLayout2"
+            android:weightSum="1">
+
+             <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="275dp"
             android:ellipsize="end"
             android:text="Complaints to resolve"
             android:textStyle="bold|italic"
-            android:textSize="20dp"
+            android:textSize="25dp"
+            android:textColor="@color/white"
             android:inputType="text"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="30dp"
             android:layout_marginLeft="60dp"
             android:layout_marginStart="27dp"
             android:id="@+id/textView6"
             android:layout_below="@+id/linearLayout"
             />
+
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="30dp"
+                android:id="@+id/imageButton2"
+                android:background="@drawable/search" />
+
+        </LinearLayout>
+
         <ScrollView
             android:layout_width="370dp"
             android:layout_height="420dp"
