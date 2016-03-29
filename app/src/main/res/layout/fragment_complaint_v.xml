@@ -1,0 +1,229 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/blue2"
+    tools:context="com.example.user.complaintapp.ComplaintV">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+     <LinearLayout android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+         android:id="@+id/linearLayout2"
+         android:weightSum="1">
+         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="174dp"
+            android:text="Complaint Description"
+            android:id="@+id/cv1"
+            android:layout_weight="0.65" />
+
+         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Image"
+            android:id="@+id/cv10"
+            android:layout_alignTop="@+id/cv13"
+            android:layout_toLeftOf="@+id/cv13"
+            android:layout_toStartOf="@+id/cv13"
+            android:layout_marginRight="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_weight="0.48"
+             />
+
+     </LinearLayout>
+
+     <LinearLayout android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+         android:layout_alignBottom="@+id/linearLayout4"
+         android:layout_alignLeft="@+id/linearLayout6"
+         android:layout_alignStart="@+id/linearLayout6"
+         android:layout_marginBottom="18dp"
+         android:id="@+id/linearLayout7">
+
+     </LinearLayout>
+
+     <LinearLayout android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+         android:layout_below="@+id/linearLayout4"
+         android:layout_alignLeft="@+id/linearLayout4"
+         android:layout_alignStart="@+id/linearLayout4"
+         android:layout_marginLeft="31dp"
+         android:layout_marginStart="31dp"
+         android:layout_marginTop="13dp"
+         android:id="@+id/linearLayout6">
+      <!--  <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="poll id"
+        android:id="@+id/cv5" />
+      -->
+
+     </LinearLayout>
+
+     <LinearLayout android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+         android:layout_below="@+id/linearLayout2"
+         android:layout_alignLeft="@+id/cv10"
+         android:layout_alignStart="@+id/cv10"
+         android:layout_marginLeft="14dp"
+         android:layout_marginStart="14dp"
+         android:layout_marginTop="53dp"
+         android:id="@+id/linearLayout4">
+       <!--
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="threadid"
+        android:id="@+id/cv7" />
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="anony"
+        android:id="@+id/cv8" />
+        -->
+
+     </LinearLayout>
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="view polls"
+        android:id="@+id/b2"
+        android:background="@drawable/buttonborder"
+        android:layout_above="@+id/b4"
+        android:layout_alignLeft="@+id/linearLayout6"
+        android:layout_alignStart="@+id/linearLayout6"
+        android:layout_marginBottom="52dp" />
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="view threads"
+        android:id="@+id/b3"
+        android:background="@drawable/buttonborder"
+        android:layout_marginRight="38dp"
+        android:layout_marginEnd="38dp"
+        android:layout_alignTop="@+id/b2"
+        android:layout_alignRight="@+id/linearLayout4"
+        android:layout_alignEnd="@+id/linearLayout4" />
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="upvote"
+        android:id="@+id/b4"
+        android:background="@drawable/buttonborder"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/b2"
+        android:layout_alignStart="@+id/b2" />
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="downvote"
+        android:id="@+id/b5"
+        android:background="@drawable/buttonborder"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/b3"
+        android:layout_alignStart="@+id/b3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status"
+            android:id="@+id/cv13"
+            android:layout_weight="0.03"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_toLeftOf="@+id/cv12"
+            android:layout_toStartOf="@+id/cv12" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Is_personal"
+            android:id="@+id/cv12"
+            android:layout_above="@+id/cv4"
+            android:layout_alignRight="@+id/b3"
+            android:layout_alignEnd="@+id/b3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Resolver"
+            android:id="@+id/cv6"
+            android:layout_above="@+id/cv4"
+            android:layout_toRightOf="@+id/b2"
+            android:layout_toEndOf="@+id/b2" />
+
+        <!--
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="id of compliant"
+            android:id="@+id/cv2"
+            android:layout_above="@+id/cv13"
+            android:layout_toLeftOf="@+id/b5"
+            android:layout_toStartOf="@+id/b5" />
+        -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Priority"
+            android:id="@+id/cv3"
+            android:layout_gravity="bottom"
+            android:layout_weight="0.54"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_alignLeft="@+id/linearLayout7"
+            android:layout_alignStart="@+id/linearLayout7"
+            android:layout_marginLeft="35dp"
+            android:layout_marginStart="35dp" />
+
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Redundant"
+              android:id="@+id/cv11"
+              android:layout_marginLeft="30dp"
+              android:layout_alignTop="@+id/cv4"
+              android:layout_alignRight="@+id/cv3"
+              android:layout_alignEnd="@+id/cv3"
+              android:layout_alignParentBottom="true" />
+
+          <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Complainer"
+            android:id="@+id/cv4"
+              android:layout_below="@+id/linearLayout6"
+              android:layout_toRightOf="@+id/cv6"
+              android:layout_toEndOf="@+id/cv6"
+              android:layout_marginTop="31dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Team"
+            android:id="@+id/cv9"
+            android:layout_alignTop="@+id/linearLayout4"
+            android:layout_alignLeft="@+id/linearLayout6"
+            android:layout_alignStart="@+id/linearLayout6" />
+
+
+        <!-- <Button
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="mark redundant"
+             android:id="@+id/b6" />
+          -->
+    </RelativeLayout>
+
+</LinearLayout>
